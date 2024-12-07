@@ -22,15 +22,16 @@ class _LatestNewsPageState extends State<LatestNewsPage> {
   final ApiClient _apiClient = ApiClient();
   List<dynamic> _articles = [];
   bool _isLoading = true;
-  String _selectedCategory = 'technology';
+  String _selectedCategory = 'business';
 
-  // List of categories
   final List<String> _categories = [
-    'technology',
-    'education',
-    'sports',
+    'business',
+    'entertainment',
+    'general',
     'health',
-    'business'
+    'science',
+    'sports', 
+    'technology',
   ];
 
   @override
@@ -39,7 +40,8 @@ class _LatestNewsPageState extends State<LatestNewsPage> {
     _fetchLatestNews();
   }
 
-  void _fetchLatestNews() async {
+  
+void _fetchLatestNews() async {
     _isLoading = true;
     final response =
         await _apiClient.getLatestNews(category: _selectedCategory);
@@ -48,7 +50,6 @@ class _LatestNewsPageState extends State<LatestNewsPage> {
       _isLoading = false;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
