@@ -23,7 +23,6 @@ class _PopularNewsPageState extends State<PopularNewsPage> {
   List<dynamic> _articles = [];
   String _selectedCategory = 'technology';
 
-  // List of categories
   final List<String> _categories = [
     'technology',
     'education',
