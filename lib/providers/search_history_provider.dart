@@ -7,9 +7,9 @@ class SearchHistoryProvider extends ChangeNotifier {
 
   void addSearchQuery(String query) {
     if (!_searchHistory.contains(query)) {
-      _searchHistory.insert(0, query); // Add new search at the top
+      _searchHistory.insert(0, query);
       if (_searchHistory.length > 5) {
-        _searchHistory.removeLast(); // Keep history size to 5
+        _searchHistory.removeLast();
       }
       notifyListeners();
     }
