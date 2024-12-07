@@ -22,14 +22,16 @@ class _PopularNewsPageState extends State<PopularNewsPage> {
   final ApiClient _apiClient = ApiClient();
   List<dynamic> _articles = [];
   bool _isLoading = true;
-  String _selectedCategory = 'education';
+  String _selectedCategory = 'business';
 
   final List<String> _categories = [
-    'technology',
-    'education',
-    'sports',
+    'business',
+    'entertainment',
+    'general',
     'health',
-    'business'
+    'science',
+    'sports', 
+    'technology',
   ];
 
   @override
