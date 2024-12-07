@@ -2,12 +2,12 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:news_app/latest_news_page.dart';
-import 'package:news_app/popular_news_page.dart';
-import 'package:news_app/headline_page.dart';
-import 'package:news_app/news_sources_page.dart';
+import 'package:news_app/pages/latest_news_page.dart';
+import 'package:news_app/pages/popular_news_page.dart';
+import 'package:news_app/pages/headline_page.dart';
+import 'package:news_app/pages/news_sources_page.dart';
 import 'package:news_app/providers/search_history_provider.dart';
-import 'package:news_app/search_news_page.dart';
+import 'package:news_app/pages/search_news_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
