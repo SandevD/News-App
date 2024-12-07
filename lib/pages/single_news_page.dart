@@ -6,7 +6,6 @@ class SingleNewsPage extends StatelessWidget {
 
   const SingleNewsPage({super.key, required this.article});
 
-  // Method to launch the URL
   Future<void> _launchURL() async {
     final Uri url = Uri.parse(article['url']);
     if (!await launchUrl(url)) {
@@ -36,7 +35,6 @@ class SingleNewsPage extends StatelessWidget {
             const SizedBox(height: 8),
             Text(article['description'] ?? 'No description available'),
             const SizedBox(height: 16),
-            // Add the clickable URL at the end
             TextButton(
               onPressed: _launchURL,
               child: const Text(
