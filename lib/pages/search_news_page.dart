@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../services/api_client.dart';
 import 'package:news_app/providers/search_history_provider.dart';
 
-// Extension to capitalize the first letter of a string
 extension CapitalizeExtension on String {
   String capitalize() {
     if (isEmpty) return this;
@@ -26,7 +25,7 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
   List<dynamic> _articles = [];
   final String _defaultSelection = 'technology';
   final TextEditingController _searchController = TextEditingController();
-  bool _isLoading = false; // Flag for loading state
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -36,7 +35,7 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
 
   void _fetchSearchNews({String? searchQuery}) async {
     setState(() {
-      _isLoading = true; // Show loading indicator
+      _isLoading = true;
     });
 
     final response = await _apiClient.getSearchNews(
@@ -45,13 +44,12 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
 
     setState(() {
       _articles = response.data['articles'];
-      _isLoading = false; // Hide loading indicator
+      _isLoading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // Get search history from the provider
     final searchHistory =
         Provider.of<SearchHistoryProvider>(context).searchHistory;
 
@@ -63,7 +61,7 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
       ),
       body: _isLoading
           ? const Center(
-              child: CircularProgressIndicator()) // Centered loading indicator
+              child: CircularProgressIndicator())
           : Column(
               children: [
                 Padding(
@@ -77,7 +75,6 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
                         onPressed: () {
                           final query = _searchController.text.trim();
                           if (query.isNotEmpty) {
-                            // Add the search term to history and fetch the news
                             Provider.of<SearchHistoryProvider>(context,
                                     listen: false)
                                 .addSearchQuery(query);
@@ -113,7 +110,6 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    // Fetch news based on the history item
                                     _fetchSearchNews(searchQuery: query);
                                   },
                                   child: Text(query.capitalize()),
@@ -123,7 +119,6 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
                           ),
                         ),
                 ),
-                // Display articles after fetching
                 Expanded(
                   child: ListView.builder(
                     itemCount: _articles.length,
@@ -133,7 +128,6 @@ class _SearchNewsPageState extends State<SearchNewsPage> {
                         title: Text(article['title']),
                         subtitle: Text(article['description'] ?? ''),
                         onTap: () {
-                          // Navigate to the article page (if needed)
                           Navigator.push(
                             context,
                             MaterialPageRoute(
