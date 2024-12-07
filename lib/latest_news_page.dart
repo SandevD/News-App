@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:news_app/single_news_page.dart';
 import 'api_client.dart';
 
-// Extension to capitalize the first letter of a string
 extension CapitalizeExtension on String {
   String capitalize() {
     if (isEmpty) return this;
