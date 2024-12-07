@@ -31,8 +31,14 @@ class ApiClient {
     );
   }
 
-  Future<Response> searchNews(String query) async {
-    return await _dio.get('everything', queryParameters: {'q': query});
+  Future<Response> getSearchNews({required String searchQuery}) async {
+    return await _dio.get(
+      'everything',
+      queryParameters: {
+        'q': searchQuery,
+        'sortBy': 'publishedAt',
+      },
+    );
   }
 
   Future<Response> getNewsSources() async {
